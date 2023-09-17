@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(
-      MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: LoginPage(),
-      )
-  );
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: LoginPage(),
+  ));
 }
 
 class LoginPage extends StatelessWidget {
@@ -23,78 +21,78 @@ class LoginPage extends StatelessWidget {
       home: Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
-              leading: Icon(Icons.account_circle_sharp),
-              title: Text("Login")
-          ),
+              leading: Icon(Icons.account_circle_sharp), title: Text("Login")),
           body: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.network("https://cdn3d.iconscout.com/3d/free/thumb/free-instagram-4703914-3915166.png", height: 250),
-                    Text(
-                        "Login instagram",
+                    Image.network(
+                        "https://cdn3d.iconscout.com/3d/free/thumb/free-instagram-4703914-3915166.png",
+                        height: 250),
+                    Text("Login instagram",
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
-                            color: Colors.primaries.first
-                        )
-                    ),
+                            color: Colors.primaries.first)),
                     SizedBox(height: 20),
-                    Text(
-                        "ID & Pass : gilang",
+                    Text("ID & Pass : gilang",
                         style: TextStyle(
                             fontWeight: FontWeight.normal,
                             fontSize: 10,
-                            color: Colors.black54
-                        )
-                    ),
+                            color: Colors.black54)),
                     SizedBox(height: 30),
                     TextField(
                         controller: username,
                         decoration: InputDecoration(
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25)
-                            ),
-                            labelText: "Username"
-                        )
-                    ),
+                                borderRadius: BorderRadius.circular(25)),
+                            labelText: "Username")),
                     SizedBox(height: 10),
                     TextField(
                         controller: password,
                         obscureText: true,
                         decoration: InputDecoration(
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25)
-                            ),
-                            labelText: "Kata sandi"
-                        )
-                    ),
+                                borderRadius: BorderRadius.circular(25)),
+                            labelText: "Kata sandi")),
                     SizedBox(height: 30),
                     ElevatedButton(
                         onPressed: () {
-                          if (username.text == "gilang" && password.text == "gilang") {
+                          if (username.text == "gilang" &&
+                              password.text == "gilang") {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (
-                                        (context) => Page2()
-                                )
-                                )
-                            );
+                                MaterialPageRoute(
+                                    builder: ((context) => Page2())));
                           }
                         },
                         style: ElevatedButton.styleFrom(
                             minimumSize: Size.fromHeight(55),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))
-                        ),
-                        child: Text("Masuk")
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20))),
+                        child: Text("Masuk")),
+                    SizedBox(
+                      height: 10,
                     ),
-                  ]
-              ),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: ((context) => Page3())));
+                        },
+                        child: Text(
+                          "Lupa kata sandi?",
+                          style: TextStyle(
+                              fontWeight: FontWeight.normal,
+                              fontSize: 13,
+                              color: Colors.black54),
+                        ))
+                  ]),
             ),
-          )
-      ),
+          )),
     );
   }
 }
@@ -104,7 +102,6 @@ class Page2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       theme: ThemeData(primarySwatch: Colors.primaries.first),
       debugShowCheckedModeBanner: false,
@@ -112,9 +109,7 @@ class Page2 extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-            leading: Icon(Icons.account_circle_sharp),
-            title: Text("Profile")
-        ),
+            leading: Icon(Icons.account_circle_sharp), title: Text("Profile")),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(20),
@@ -130,17 +125,73 @@ class Page2 extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (
-                                      (context) => LoginPage()
-                              )
-                          )
-                      );
+                              builder: ((context) => LoginPage())));
                     },
                     style: ElevatedButton.styleFrom(
                         minimumSize: Size.fromHeight(50),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25))
-                    ),child : Text("Keluar")ooo
-                )
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25))),
+                    child: Text("Keluar"))
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class Page3 extends StatelessWidget {
+  const Page3({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(primarySwatch: Colors.primaries.first),
+      debugShowCheckedModeBanner: false,
+      title: "Lupa Password",
+      home: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+            leading: Icon(Icons.key_outlined),
+            title: Text("Atur Ulang kata Sandi")),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              // mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                    Image.network(
+                      "data:image/png;base64,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",
+                      height: 150,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text("Masukkan email, telephone, atau nama pengguna dan"),
+                    Text(" kami akan mengirimi Anda tautan "),
+                    Text("untuk kembali ke akun Anda."),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    TextField(
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20)),
+                            labelText: "Email, Telephone, atau Username")),
+                    SizedBox(height: 10),
+                    ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: ((context) => LoginPage())));
+                        },
+                        style: ElevatedButton.styleFrom(
+                            minimumSize: Size.fromHeight(50),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25))),
+                        child: Text("Kirim Tautan"))
               ],
             ),
           ),
